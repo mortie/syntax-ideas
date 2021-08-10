@@ -26,6 +26,7 @@ struct Vector2(T) {
 }
 
 // Implement math operators, will be used by among other things the + and - operators
+// The Math interface is a special interface the compiler knows about
 impl Vector2(T)::Math {
   add(other Vector2(T)) Vector2(T) {
     return Vector2(T) {
@@ -41,5 +42,28 @@ impl Vector2(T)::Math {
       x: self.x - other.x
       y: self.y - other.y
     }
+  }
+  
+  mult(num T) Vector2(T) {
+    return {
+      x: self.x * num
+      y: self.y * num
+    }
+  }
+  
+  div(num T) Vector2(T) {
+    // Use the multiply operator we just implemented
+    return self * (1 / num)
+  }
+}
+
+// Implement other methods on Vector(T) directly
+impl Vector2(T) {
+  length() T {
+    return math::sqrt self.x * self.x, self.y * self.y
+  }
+  
+  normalize() Vector2(T) {
+    return self / self.length()
   }
 }
