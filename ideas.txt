@@ -1,0 +1,45 @@
+// Create an interface
+interface Frobnicator {
+  frobnicate(times int) void
+}
+
+// Create a Human class
+// Since it is a class, it's a move-only type, unless it explicitly implements copying
+class Human {
+  name String
+}
+
+// Implement the Frobnicator interface
+impl Human::Frobnicator {
+  frobnicate(times int) void {
+    for _ in range(times) {
+      stdout.write "Hey I'm ", self.name, " and I'm frobnicatin'"
+    }
+  }
+}
+
+// Create a Vector2 struct template
+// Since it is a struct, it's a copyable type (a value type)
+struct Vector2(T) {
+  T x
+  T y
+}
+
+// Implement math operators, will be used by among other things the + and - operators
+impl Vector2(T)::Math {
+  add(other Vector2(T)) Vector2(T) {
+    return Vector2(T) {
+      x: self.x + other.x
+      y: self.y + other.y
+    }
+  }
+  
+  sub(other Vector2(T)) Vector2(T) {
+    // Compiler should be smart enough to figure out what the braces mean
+    // based on the function's return type
+    return {
+      x: self.x - other.x
+      y: self.y - other.y
+    }
+  }
+}
