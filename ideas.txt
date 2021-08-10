@@ -67,3 +67,13 @@ impl Vector2(T) {
     return self / self.length()
   }
 }
+
+// Main function
+func main() void {
+  vec := Vector2(float){x: 10, y: 20}
+  vec *= 100 // The compiler figures this one out thanks to a combination of assignment and Math::mult
+  
+  simon := Human{name: "Simon"}
+  simon.frobnicate(10) // This should probably work when unambiguous
+  simon.Frobnicator::frobnicate(10) // But this should probably also work to disambiguate
+}
